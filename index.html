@@ -3,178 +3,413 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Портфолио — Капас Асхат</title>
-  <meta name="description" content="Портфолио разработчика — Капас Асхат. React Native, мобильные приложения, проекты." />
+  <title>Капас Асхат — React Native разработчик</title>
+  <meta name="description" content="Портфолио Капаса Асхата — React Native разработчик. Кроссплатформенные мобильные приложения для Android и iOS, релизы в Play Market и App Store." />
+
+  <!-- Open Graph / превью при шаринге ссылки -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Капас Асхат — React Native разработчик" />
+  <meta property="og:description" content="Кроссплатформенные мобильные приложения для Android и iOS. 6+ проектов в сторах." />
+  <!-- ЗАМЕНИТЬ: абсолютные ссылки после публикации сайта -->
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:image" content="https://example.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- favicon: инлайн-SVG, отдельный файл не нужен -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230d1117'/><text x='50' y='68' font-size='52' font-family='monospace' font-weight='700' fill='%23d6ad70' text-anchor='middle'>KA</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
   <style>
     :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#9fb3c8; --accent:#06b6d4;
-      --radius:14px; --maxw:1100px; --gap:20px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg:#0d1117;          /* глубокий тёмный ink */
+      --surface:#141a24;     /* карточки */
+      --surface-2:#1b222e;   /* вложенные блоки */
+      --line:rgba(255,255,255,0.07);
+      --ink:#e8edf4;         /* основной текст */
+      --muted:#93a2b5;       /* второстепенный текст */
+      --gold:#d6ad70;        /* единственный акцент */
+      --gold-dim:rgba(214,173,112,0.14);
+      --radius:16px;
+      --maxw:1080px;
+      --display:"Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      --body:"Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --mono:"JetBrains Mono", ui-monospace, monospace;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
-      background:#0f1724; color:#e6eef6; -webkit-font-smoothing:antialiased;
-      line-height:1.5; display:flex; justify-content:center; padding:36px 18px; 
+      background:var(--bg); color:var(--ink);
+      font-family:var(--body); line-height:1.6;
+      -webkit-font-smoothing:antialiased;
     }
-    .wrap{width:100%; max-width:var(--maxw);}    
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding:12px 18px;border-radius:12px;z-index:20;box-shadow:0 6px 24px rgba(2,6,23,0.6);background:var(--bg)}
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo .badge{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:800;color:#042027}
-    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
-    nav a:hover{color:var(--accent)}
+    a{color:inherit}
+    img{max-width:100%;display:block}
 
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;margin-bottom:28px}
-    .card{background:var(--card);padding:26px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.55);border:1px solid rgba(255,255,255,0.03)}
+    /* лёгкая атмосфера: одно тёплое пятно на фоне, без градиента-клише в акценте */
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:radial-gradient(60% 40% at 78% -5%, rgba(214,173,112,0.10), transparent 60%);
+    }
 
-    .title{font-size:30px;margin:0 0 8px}
-    .lead{color:var(--muted);margin:0 0 16px}
+    .wrap{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    /* ── header (прилипающий) ── */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(13,17,23,0.82);
+      backdrop-filter:saturate(140%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .bar{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo .badge{display:flex;align-items:center;justify-content:center}
+    .badge{
+      width:42px;height:42px;border-radius:11px;
+      background:var(--gold-dim); border:1px solid rgba(214,173,112,0.4);
+      display:flex;align-items:center;justify-content:center;
+      font-family:var(--mono); font-weight:700; color:var(--gold);
+    }
+    .logo b{font-family:var(--display);font-size:16px;letter-spacing:-.01em}
+    .logo span{display:block;font-size:12px;color:var(--muted);font-weight:400}
+    nav{display:flex;align-items:center;gap:6px}
+    nav a{
+      color:var(--muted);text-decoration:none;font-weight:500;font-size:15px;
+      padding:8px 12px;border-radius:9px;transition:color .15s, background .15s;
+    }
+    nav a:hover,nav a:focus-visible{color:var(--ink);background:var(--surface-2)}
+    .burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;
+      width:42px;height:42px;color:var(--ink);cursor:pointer;align-items:center;justify-content:center}
+
+    /* ── секции ── */
+    section{padding:64px 0 8px}
+    .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    h2{font-family:var(--display);font-size:26px;letter-spacing:-.02em;margin-bottom:8px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+
+    /* ── hero ── */
+    .hero{display:grid;grid-template-columns:1.35fr .95fr;gap:28px;align-items:center;padding-top:56px}
+    .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.08;letter-spacing:-.03em;margin-bottom:16px}
+    .hero h1 .accent{color:var(--gold)}
+    .lead{color:var(--muted);font-size:17px;max-width:46ch;margin-bottom:24px}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:10px 14px;border-radius:12px;background:var(--accent);color:#042027;text-decoration:none;font-weight:700}
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:600}
+    .btn{padding:12px 20px;border-radius:11px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .12s, background .15s;display:inline-flex;align-items:center;gap:8px}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{background:var(--gold);color:#1a1206}
+    .btn.primary:hover{background:#e3bd85}
+    .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+    .btn.ghost:hover{background:var(--surface-2)}
 
-    .profile{display:flex;flex-direction:column;gap:14px;align-items:center}
-    .avatar{width:120px;height:120px;border-radius:16px;background:linear-gradient(135deg,#0e1724 0%, #1f2937 100%);display:flex;align-items:center;justify-content:center;font-size:42px;color:var(--muted)}
-    .small{font-size:14px;color:var(--muted)}
+    .hero-stats{display:flex;flex-direction:column;gap:14px}
+    .stat{display:flex;align-items:baseline;gap:14px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+    .stat b{font-family:var(--display);font-size:30px;color:var(--gold);line-height:1}
+    .stat span{color:var(--muted);font-size:14px}
 
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:12px}
-    .project{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
-    .project h4{margin:0 0 6px}
-    .project p{margin:0}
-    .links{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-    .link{font-size:13px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,0.03);color:var(--muted);text-decoration:none}
+    /* ── about ── */
+    .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+    .stack-group{margin-top:18px}
+    .stack-group h4{font-size:13px;color:var(--muted);font-weight:500;margin-bottom:8px}
+    .skills{display:flex;gap:8px;flex-wrap:wrap}
+    .skill{font-family:var(--mono);font-size:13px;padding:6px 11px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line);color:var(--ink)}
+    .contact-side{display:flex;flex-direction:column;gap:10px}
+    .contact-side .row{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);font-weight:500;transition:border-color .15s}
+    .contact-side .row:hover{border-color:rgba(214,173,112,0.5)}
+    .contact-side .row small{display:block;color:var(--muted);font-weight:400;font-size:13px}
 
-    .skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .skill{padding:6px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);font-weight:600}
+    /* ── projects ── */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:22px}
+    .project{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s, border-color .15s}
+    .project:hover{transform:translateY(-3px);border-color:rgba(214,173,112,0.4)}
+    /* слот под скриншот в рамке телефона */
+    .shot{aspect-ratio:16/10;background:var(--surface-2);border-bottom:1px solid var(--line);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .shot img{width:100%;height:100%;object-fit:cover}
+    .shot .placeholder{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:center;padding:12px;line-height:1.5}
+    .project-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+    .project h3{font-family:var(--display);font-size:19px;margin-bottom:6px}
+    .role{font-family:var(--mono);font-size:12px;color:var(--gold);margin-bottom:10px}
+    .project p{color:var(--muted);font-size:14px;flex:1}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+    .tag{font-size:11px;font-family:var(--mono);padding:3px 8px;border-radius:6px;background:var(--gold-dim);color:var(--gold)}
+    .links{display:flex;gap:8px;margin-top:auto}
+    .store{flex:1;text-align:center;font-size:13px;font-weight:600;padding:9px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);text-decoration:none;color:var(--ink);transition:background .15s}
+    .store:hover{background:#232b39}
 
-    .section-title{font-size:20px;margin-bottom:8px}
+    /* ── contact / form ── */
+    #contact .card{max-width:560px}
+    form{display:flex;flex-direction:column;gap:16px;margin-top:6px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    label{font-size:13px;color:var(--muted);font-weight:500}
+    input,textarea{background:var(--bg);border:1px solid var(--line);padding:12px 14px;border-radius:10px;color:var(--ink);font-family:var(--body);font-size:15px;width:100%}
+    input:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+    .form-note{font-size:13px;color:var(--muted)}
 
-    footer{display:flex;flex-direction:column;align-items:center;padding:14px;margin-top:28px;color:var(--muted);text-align:center}
+    footer{border-top:1px solid var(--line);margin-top:56px;padding:26px 0;text-align:center;color:var(--muted);font-size:14px}
+    footer a{color:var(--gold);text-decoration:none}
 
-    form{display:flex;flex-direction:column;gap:12px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit;width:100%}
-    input::placeholder,textarea::placeholder{color:rgba(230,238,246,0.35)}
+    :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
 
-    @media (max-width:980px){.hero{grid-template-columns:1fr}}
-    @media (max-width:720px){body{padding:18px}header{flex-direction:column;align-items:flex-start;gap:8px}.projects-grid{grid-template-columns:1fr}}
+    @media (max-width:860px){
+      .hero{grid-template-columns:1fr;gap:24px}
+      .about-grid{grid-template-columns:1fr}
+      nav{position:absolute;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+        background:var(--bg);border-bottom:1px solid var(--line);padding:8px 20px 16px;display:none}
+      nav.open{display:flex}
+      nav a{padding:12px 8px;border-radius:0;border-bottom:1px solid var(--line)}
+      .burger{display:inline-flex}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{transition:none !important}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">
-        <div class="badge">KA</div>
-        <div>
-          <div style="font-weight:800">Капас Асхат</div>
-          <div class="meta">React Native разработчик — мобильные приложения</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#home">Главная</a>
-        <a href="#about">Обо мне</a>
-        <a href="#projects">Мои проекты</a>
-        <a href="#contact">Контакты</a>
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="#home">
+        <span class="badge">KA</span>
+        <b>Капас Асхат<span>React Native · Mobile</span></b>
+      </a>
+      <button class="burger" aria-label="Меню" aria-expanded="false" onclick="toggleNav(this)">☰</button>
+      <nav id="nav">
+        <a href="#about" onclick="closeNav()">Обо мне</a>
+        <a href="#projects" onclick="closeNav()">Проекты</a>
+        <a href="#contact" onclick="closeNav()">Контакты</a>
+        <!-- ЗАМЕНИТЬ ссылку на реальный файл резюме -->
+        <a href="#" target="_blank" rel="noreferrer">Скачать CV ↓</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
+  <main class="wrap">
+    <!-- ── HERO ── -->
     <section id="home" class="hero">
-      <div class="card">
-        <h1 class="title">Привет! Я Капас Асхат — React Native разработчик</h1>
-        <p class="lead">Создаю современные мобильные приложения для Android и iOS. Публикую проекты в Play Market и App Store, работаю над образовательными и прикладными приложениями.</p>
+      <div>
+        <div class="eyebrow">React Native · Android · iOS</div>
+        <h1>Строю мобильные приложения, которые <span class="accent">доходят до сторов</span>.</h1>
+        <p class="lead">Разработчик с 5 годами опыта. Кроссплатформенные приложения на React Native: чистая архитектура, нативные модули, оптимизация и релизы в Play Market и App Store.</p>
         <div class="cta">
-          <a class="btn" href="#contact">Связаться</a>
-          <a class="btn secondary" href="#projects">Посмотреть проекты</a>
+          <a class="btn primary" href="#projects">Смотреть проекты</a>
+          <a class="btn ghost" href="#contact">Связаться</a>
         </div>
       </div>
-
-      <aside class="card profile">
-        <div class="avatar">KA</div>
-        <div style="text-align:center">
-          <div style="font-weight:700">Капас Асхат</div>
-          <div class="small">React Native / Mobile</div>
-          <div class="small">Kazakhstan</div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="about" class="card">
-      <h3 class="section-title">Обо мне</h3>
-      <p class="small">Я — мобильный разработчик с 4 годами опыта. Основная специализация — React Native: разработка кроссплатформенных приложений с чистой архитектурой, интеграцией нативных модулей и оптимизацией производительности. Участвовал в проектах по образованию, религиозным сервисам и e-commerce.</p>
-      <div class="section-title">Технологии</div>
-      <div class="skills">
-        <div class="skill">React Native</div>
-        <div class="skill">Expo</div>
-        <div class="skill">React Navigation</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">TypeScript</div>
-        <div class="skill">Firebase</div>
-        <div class="skill">Redux</div>
-        <div class="skill">Supabase</div>
-        <div class="skill">Git/GitHub/GitLab</div>
+      <div class="hero-stats">
+        <!-- ЗАМЕНИТЬ цифры на реальные (установки, рейтинг, аудитория) -->
+        <div class="stat"><b>6+</b><span>приложений в Play Market и App Store</span></div>
+        <div class="stat"><b>5</b><span>лет в мобильной разработке</span></div>
+        <div class="stat"><b>iOS + Android</b><span>из одной кодовой базы</span></div>
       </div>
     </section>
 
-    <section id="projects" class="card" style="margin-top:16px">
-      <h3 class="section-title">Мои проекты</h3>
-      <p class="small">Ниже — приложения, над которыми я работал(а). У каждого проекта есть ссылки на магазины приложений.</p>
+    <!-- ── ABOUT ── -->
+    <section id="about">
+      <div class="eyebrow">Обо мне</div>
+      <h2>Мобильная разработка на React Native</h2>
+      <div class="about-grid">
+        <div class="card">
+          <p style="color:var(--muted)">Специализируюсь на кроссплатформенных приложениях: чистая feature-based архитектура, интеграция нативных модулей (Kotlin/Swift), работа с офлайн-хранилищем и серверным состоянием, публикация и сопровождение релизов в сторах. Участвовал в проектах по образованию, религиозным сервисам, агротеху и спорту.</p>
+
+          <div class="stack-group">
+            <h4>Основное</h4>
+            <div class="skills">
+              <span class="skill">React Native</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">React Navigation</span>
+              <span class="skill">TanStack Query</span>
+              <span class="skill">Context API</span>
+              <span class="skill">NativeWind</span>
+              <span class="skill">Expo</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h4>Данные и бэкенд-сервисы</h4>
+            <div class="skills">
+              <span class="skill">Firebase</span>
+              <span class="skill">Supabase</span>
+              <span class="skill">MMKV</span>
+              <span class="skill">Axios / REST</span>
+              <span class="skill">Redux</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <h4>Инструменты</h4>
+            <div class="skills">
+              <span class="skill">Git / GitHub / GitLab</span>
+              <span class="skill">TypeScript · базово</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-side">
+          <!-- ЗАМЕНИТЬ ссылки на реальные профили -->
+          <a class="row" href="https://github.com/qapasaskhat" target="_blank" rel="noreferrer">GitHub<small>github.com/qapasaskhat</small></a>
+          <a class="row" href="https://kz.linkedin.com/in/qapas-askhat-3883461b8?trk=people-guest_people_search-card" target="_blank" rel="noreferrer">LinkedIn<small>linkedin.com/in/qapas-askhat-3883461b8</small></a>
+          <a class="row" href="https://t.me/qapasaskhat" target="_blank" rel="noreferrer">Telegram<small>@qapasaskhat</small></a>
+          <a class="row" href="mailto:kapas_ashat@mail.ru">Email<small>kapas_ashat@mail.ru</small></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects">
+      <div class="eyebrow">Проекты</div>
+      <h2>Приложения в сторах</h2>
+      <p style="color:var(--muted);max-width:60ch">Каждый проект опубликован в Play Market и App Store. Роль и стек указаны под названием.</p>
 
       <div class="projects-grid">
+        <!-- FURQAN -->
         <div class="project">
-          <h4>Furqan</h4>
-          <p class="small">Приложение для чтения и обучения Корану в группах. Создавайте группы до 30 человек, проходите Хатым, изучайте Коран, используйте зикры, время намаза и компас Киблы.</p>
-          <div class="links">
-            <a class="link" href="https://play.google.com/store/apps/details?id=com.newfurqon" target="_blank" rel="noreferrer">Play Market</a>
-            <a class="link" href="https://apps.apple.com/kz/app/furqan/id6748604960" target="_blank" rel="noreferrer">App Store</a>
+          <div class="shot">
+            <!-- ЗАМЕНИТЬ на <img src="shots/furqan.png" alt="Furqan — экран приложения"> -->
+            <!-- <div class="placeholder">＋ скриншот<br>Furqan</div> -->
+             <img src="shots/furqan.png" alt="Furqan — экран приложения"> 
+          </div>
+          <div class="project-body">
+            <h3>Furqan</h3>
+            <!-- ЗАМЕНИТЬ: твоя роль и главный вклад -->
+            <div class="role">Главный разработчик · Архитектура приложения, групповые сессии Хатыма в реальном времени, время намаза и компас Киблы, релизы в Play Market и App Store.</div>
+            <p>Чтение и изучение Корана в группах до 30 человек: Хатым, зикры, время намаза и компас Киблы.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">Firebase</span></div>
+            <div class="links">
+              <a class="store" href="https://play.google.com/store/apps/details?id=com.newfurqon" target="_blank" rel="noreferrer">Play ↗</a>
+              <a class="store" href="https://apps.apple.com/kz/app/furqan/id6748604960" target="_blank" rel="noreferrer">App Store ↗</a>
+            </div>
           </div>
         </div>
 
+        <!-- NURBOLASHAQ -->
         <div class="project">
-          <h4>Nurbolashaq</h4>
-          <p class="small">Приложение для школьников 10–11 классов: видеоуроки по всем предметам, тесты по формату ЕНТ, статистика прогресса и гибкий график занятий.</p>
-          <div class="links">
-            <a class="link" href="https://play.google.com/store/apps/details?id=com.nurbolashaq" target="_blank" rel="noreferrer">Play Market</a>
-            <a class="link" href="https://apps.apple.com/kz/app/nurbolashaq/id6747584104" target="_blank" rel="noreferrer">App Store</a>
+          <!-- <div class="shot"><div class="placeholder">＋ скриншот<br>Nurbolashaq</div></div> -->
+           <img src="shots/nurbolashaq.png" alt="Nurbolashaq — экран приложения"> 
+          <div class="project-body">
+            <h3>Nurbolashaq</h3>
+            <div class="role">Главный разработчик · Плеер видеоуроков, движок тестов в формате ЕНТ, экраны статистики прогресса, кроссплатформенная сборка iOS/Android.</div>
+            <p>Подготовка школьников 10–11 классов: видеоуроки по всем предметам, тесты в формате ЕНТ, статистика прогресса.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">Video</span></div>
+            <div class="links">
+              <a class="store" href="https://play.google.com/store/apps/details?id=com.nurbolashaq" target="_blank" rel="noreferrer">Play ↗</a>
+              <a class="store" href="https://apps.apple.com/kz/app/nurbolashaq/id6747584104" target="_blank" rel="noreferrer">App Store ↗</a>
+            </div>
           </div>
         </div>
 
+        <!-- FTEST -->
         <div class="project">
-          <h4>FTest</h4>
-          <p class="small">Подготовка к ЕНТ: актуальные тесты по всем предметам, подробные объяснения ответов и инструменты для отслеживания прогресса.</p>
-          <div class="links">
-            <a class="link" href="https://play.google.com/store/apps/details?id=com.askhat.ftest" target="_blank" rel="noreferrer">Play Market</a>
-            <a class="link" href="https://apps.apple.com/us/app/ftest/id6742422748" target="_blank" rel="noreferrer">App Store</a>
+          <!-- <div class="shot"><div class="placeholder">＋ скриншот<br>FTest</div></div> -->
+           <img src="shots/ftest.png" alt="FTEST — экран приложения"> 
+          <div class="project-body">
+            <h3>FTest</h3>
+            <div class="role">Главный разработчик · Прохождение тестов с разбором ответов, отслеживание прогресса, кэширование и работа офлайн, публикация в оба стора.</div>
+            <p>Подготовка к ЕНТ: актуальные тесты по всем предметам, разбор ответов и отслеживание прогресса.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">TanStack Query</span></div>
+            <div class="links">
+              <a class="store" href="https://play.google.com/store/apps/details?id=com.askhat.ftest" target="_blank" rel="noreferrer">Play ↗</a>
+              <a class="store" href="https://apps.apple.com/us/app/ftest-pro-ұбт/id6755417377" target="_blank" rel="noreferrer">App Store ↗</a>
+            </div>
           </div>
         </div>
 
+        <!-- BAIAGRO -->
         <div class="project">
-          <h4>BaiAgro</h4>
-          <p class="small">Доска объявлений в сфере АПК: сфокусированная площадка, простая регистрация по номеру, удобный интерфейс, фильтры, аналитика рынка, расчёт норм внесения удобрений, поддержка русского и казахского языков.</p>
-          <div class="links">
-            <a class="link" href="https://play.google.com/store/apps/details?id=com.bai.agro" target="_blank" rel="noreferrer">Play Market</a>
-            <a class="link" href="https://apps.apple.com/us/app/baiagro/id1591945028" target="_blank" rel="noreferrer">App Store</a>
+          <div class="shot"><div class="placeholder">＋ скриншот<br>BaiAgro</div></div>
+          <div class="project-body">
+            <h3>BaiAgro</h3>
+            <div class="role">Ведущий разработчик · Доска объявлений АПК, регистрация по номеру телефона, фильтры и аналитика рынка, калькулятор норм удобрений, локализация ru/kz.</div>
+            <p>Доска объявлений для АПК: регистрация по номеру, фильтры, аналитика рынка, расчёт норм удобрений. Русский и казахский языки.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">i18n</span></div>
+            <div class="links">
+              <a class="store" href="https://play.google.com/store/apps/details?id=com.bai.agro" target="_blank" rel="noreferrer">Play ↗</a>
+              <a class="store" href="https://apps.apple.com/us/app/baiagro/id1591945028" target="_blank" rel="noreferrer">App Store ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DODA.KZ -->
+        <div class="project">
+          <!-- <div class="shot"><div class="placeholder">＋ скриншот<br>Doda.kz</div></div> -->
+           <img src="shots/dodakz.png" alt="DODA.kz — экран приложения"> 
+          <div class="project-body">
+            <h3>Doda.kz</h3>
+            <div class="role">Ведущий разработчик · Профили команд и история матчей, визуализация турнирных сеток, deep linking, архитектура под спортивное супер-приложение.</div>
+            <p>Спортивное супер-приложение: объединяет спортсменов, команды и владельцев инфраструктуры Казахстана. История матчей, профили, турнирные сетки.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">Deep Linking</span></div>
+            <div class="links">
+              <a class="store" href="https://play.google.com/store/apps/details?id=com.dodakz" target="_blank" rel="noreferrer">Play ↗</a>
+              <a class="store" href="https://apps.apple.com/us/app/doda-kz/id6759046507" target="_blank" rel="noreferrer">App Store ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- IQRO -->
+        <div class="project">
+          <!-- <div class="shot"><div class="placeholder">＋ скриншот<br>IQRO</div></div> -->
+           <img src="shots/iqro.png" alt="IQRO — экран приложения"> 
+          <div class="project-body">
+            <h3>IQRO</h3>
+            <div class="role">Ведущий разработчик · Платформа видеоуроков по таджуиду, домашние задания и тесты после уроков, отслеживание прохождения, релизы в Play Market и App Store.</div>
+            <p>Обучение чтению Корана и правилам таджуида: видеоуроки, домашние задания и тесты для закрепления.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">Video</span></div>
+            <div class="links">
+              <a class="store" href="https://play.google.com/store/apps/details?id=com.iqromobile" target="_blank" rel="noreferrer">Play ↗</a>
+              <a class="store" href="https://apps.apple.com/us/app/iqro/id6630379023" target="_blank" rel="noreferrer">App Store ↗</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="card">
-      <h3 class="section-title">Контакты</h3>
-      <form onsubmit="sendMail(event)">
-        <input id="name" placeholder="Ваше имя" required />
-        <input id="email" type="email" placeholder="Email" required />
-        <textarea id="message" rows="4" placeholder="Коротко о проекте" required></textarea>
-        <button class="btn" type="submit">Отправить</button>
-      </form>
-      <div style="margin-top:12px;color:var(--muted);font-size:14px;">Email: <a href="mailto:kapas_ashat@mail.ru" style="color:var(--accent);text-decoration:none">kapas_ashat@mail.ru</a></div>
+    <!-- ── CONTACT ── -->
+    <section id="contact">
+      <div class="eyebrow">Контакты</div>
+      <h2>Обсудим проект</h2>
+      <div class="card">
+        <!--
+          ЗАМЕНИТЬ action на свой endpoint формы (Formspree / Web3Forms / свой бэкенд).
+          Пример Formspree: action="https://formspree.io/f/ВАШ_ID" method="POST"
+          Сейчас форма ведёт себя как безопасный запасной вариант через mailto.
+        -->
+        <form onsubmit="return sendMail(event)">
+          <div class="field">
+            <label for="name">Имя</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Как к вам обращаться" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="message">Сообщение</label>
+            <textarea id="message" name="message" rows="4" placeholder="Коротко о задаче" required></textarea>
+          </div>
+          <button class="btn primary" type="submit" style="justify-content:center">Отправить</button>
+          <p class="form-note">Или напишите напрямую: <a href="mailto:kapas_ashat@mail.ru" style="color:var(--gold)">kapas_ashat@mail.ru</a> · <a href="https://t.me/username" style="color:var(--gold)">Telegram</a></p>
+        </form>
+      </div>
     </section>
+  </main>
 
-    <footer>
-      <div class="meta">© <span id="year"></span> Капас Асхат</div>
-    </footer>
-  </div>
+  <footer>
+    <div class="wrap">© <span id="year"></span> Капас Асхат · React Native разработчик</div>
+  </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    function toggleNav(btn){
+      const nav = document.getElementById('nav');
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    }
+    function closeNav(){
+      const nav = document.getElementById('nav');
+      nav.classList.remove('open');
+      document.querySelector('.burger').setAttribute('aria-expanded','false');
+    }
+
+    // Запасной вариант отправки через почтовый клиент.
+    // Если подключишь Formspree/Web3Forms — удали этот обработчик и onsubmit у формы.
     function sendMail(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
@@ -182,7 +417,8 @@
       const msg = document.getElementById('message').value.trim();
       const subject = encodeURIComponent('Портфолио — запрос от ' + name);
       const body = encodeURIComponent('Имя: ' + name + '\nEmail: ' + email + '\n\n' + msg);
-      window.location.href = `mailto:kapas_ashat@mail.ru?subject=${subject}&body=${body}`;
+      window.location.href = 'mailto:kapas_ashat@mail.ru?subject=' + subject + '&body=' + body;
+      return false;
     }
   </script>
 </body>
