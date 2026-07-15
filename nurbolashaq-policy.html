@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Политика конфиденциальности — Nurbolashaq</title>
+<meta name="description" content="Политика конфиденциальности мобильного приложения Nurbolashaq: какие данные собираются, зачем, кому передаются и как их удалить.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Политика конфиденциальности — Nurbolashaq">
+<meta property="og:description" content="Какие данные собирает приложение Nurbolashaq, зачем и как ими управлять.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --ink:#0E1626;
+    --ink-2:#16213A;
+    --line:rgba(255,255,255,.10);
+    --text:#E8ECF4;
+    --muted:#9AA6BF;
+    --nur:#F2C14E;
+    --nur-soft:rgba(242,193,78,.14);
+    --danger:#E5715F;
+    --radius:14px;
+    --font: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(242,193,78,.10), transparent 60%),
+      var(--ink);
+    color:var(--text);
+    font-family:var(--font);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:40px 20px 72px}
+  header.top{display:flex;align-items:center;gap:12px;margin-bottom:36px;flex-wrap:wrap}
+  .logo{
+    width:38px;height:38px;border-radius:11px;flex:none;
+    background:linear-gradient(160deg,var(--nur),#C98F1E);
+    display:grid;place-items:center;color:#1A1206;font-weight:800;font-size:17px;
+  }
+  .brand{font-weight:700;letter-spacing:.2px}
+  .brand small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;letter-spacing:.4px}
+  .lang{margin-left:auto;display:flex;gap:4px;border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{
+    background:none;border:0;color:var(--muted);font:inherit;font-size:13px;font-weight:600;
+    padding:5px 12px;border-radius:999px;cursor:pointer
+  }
+  .lang button[aria-pressed="true"]{background:var(--nur-soft);color:var(--nur)}
+  .lang button:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--nur);outline-offset:2px}
+
+  h1{font-size:clamp(28px,5vw,38px);line-height:1.2;margin:0 0 10px;letter-spacing:-.5px}
+  .lede{color:var(--muted);margin:0 0 8px;max-width:62ch}
+  .meta{color:var(--muted);font-size:13px;margin:0 0 28px}
+  h2{font-size:19px;margin:38px 0 12px;letter-spacing:-.2px;scroll-margin-top:20px}
+  h2 .num{color:var(--nur);font-size:13px;font-weight:700;margin-right:8px;vertical-align:2px}
+  h3{font-size:15px;margin:18px 0 6px}
+  p{margin:0 0 12px}
+  a{color:var(--nur)}
+  ul{margin:0 0 12px;padding-left:20px;color:var(--muted)}
+  ul li{margin-bottom:5px}
+  ul li b{color:var(--text);font-weight:600}
+
+  .toc{
+    background:var(--ink-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 20px;margin-bottom:8px
+  }
+  .toc ol{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px;columns:2;column-gap:24px}
+  .toc li{margin-bottom:4px;break-inside:avoid}
+  @media(max-width:560px){.toc ol{columns:1}}
+
+  .card{
+    background:var(--ink-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px 6px;margin-bottom:14px
+  }
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.6px}
+  td:first-child{width:38%;font-weight:600}
+  td:first-child + td{color:var(--muted)}
+  .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .tag.no{background:rgba(229,113,95,.16);color:var(--danger)}
+  .tag.yes{background:rgba(242,193,78,.16);color:var(--nur)}
+  .note{border-left:2px solid var(--nur);padding:2px 0 2px 14px;color:var(--muted);font-size:14px;margin:14px 0}
+  .cta{
+    display:inline-block;padding:12px 20px;border-radius:10px;
+    background:var(--nur);color:#1A1206;font-weight:700;font-size:15px;text-decoration:none;margin:6px 0 4px
+  }
+  .cta:hover{filter:brightness(1.06)}
+  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  [data-lang]{display:none}
+  html[data-active="ru"] [data-lang="ru"],
+  html[data-active="en"] [data-lang="en"]{display:revert}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo" aria-hidden="true">N</div>
+    <div class="brand">
+      Nurbolashaq
+      <small data-lang="ru">Политика конфиденциальности</small>
+      <small data-lang="en">Privacy policy</small>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="ru" aria-pressed="true">RU</button>
+      <button type="button" data-set="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+  <!-- ============ RU ============ -->
+  <div data-lang="ru">
+    <h1>Политика конфиденциальности</h1>
+    <p class="lede">Документ описывает, какие данные собирает мобильное приложение <b>Nurbolashaq</b> (Android, пакет <code>com.nurbolashaq</code>), зачем они нужны, кому передаются и как ими управлять.</p>
+    <p class="meta">Редакция от 15 июля 2026 г. · Действует с 15 июля 2026 г.</p>
+
+    <div class="toc">
+      <ol>
+        <li><a href="#ru-1">Кто обрабатывает данные</a></li>
+        <li><a href="#ru-2">Какие данные собираются</a></li>
+        <li><a href="#ru-3">Зачем и на каком основании</a></li>
+        <li><a href="#ru-4">Кому передаются</a></li>
+        <li><a href="#ru-5">Где хранятся и сколько</a></li>
+        <li><a href="#ru-6">Ваши права</a></li>
+        <li><a href="#ru-7">Удаление аккаунта</a></li>
+        <li><a href="#ru-8">Дети</a></li>
+        <li><a href="#ru-9">Безопасность</a></li>
+        <li><a href="#ru-10">Изменения</a></li>
+        <li><a href="#ru-11">Контакты</a></li>
+      </ol>
+    </div>
+
+    <h2 id="ru-1"><span class="num">01</span>Кто обрабатывает данные</h2>
+    <p>Оператор персональных данных — <b>ТОО «Nurbolashaq»</b>, БИН 000000000000, Казахстан, г. Алматы. Контакт по вопросам данных: <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a>.</p>
+    <p>Устанавливая приложение и создавая аккаунт, вы соглашаетесь с этой политикой. Если вы с ней не согласны — не используйте приложение.</p>
+
+    <h2 id="ru-2"><span class="num">02</span>Какие данные собираются</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Категория</th><th>Что именно</th></tr></thead>
+        <tbody>
+          <tr><td>Данные аккаунта</td><td>имя, e-mail, номер телефона, фото профиля, город, дата рождения — то, что вы указываете сами</td></tr>
+          <tr><td>Данные входа</td><td>хеш пароля, токены сессии; при входе через Google/Apple — идентификатор аккаунта, имя и e-mail, переданные провайдером</td></tr>
+          <tr><td>Активность в приложении</td><td>прогресс обучения, избранное, результаты тестов, настройки интерфейса</td></tr>
+          <tr><td>Пользовательский контент</td><td>комментарии, обращения в поддержку, загруженные файлы</td></tr>
+          <tr><td>Технические данные</td><td>модель устройства, версия ОС и приложения, язык, IP-адрес, push-токен, отчёты о сбоях</td></tr>
+          <tr><td>Аналитика</td><td>обезличенные события: открытия экранов, продолжительность сессии</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Приложение <b>не собирает</b> точную геолокацию, контакты, SMS, историю звонков, данные о здоровье и не читает файлы за пределами того, что вы явно выбираете для загрузки.</p>
+
+    <h2 id="ru-3"><span class="num">03</span>Зачем и на каком основании</h2>
+    <ul>
+      <li><b>Работа приложения и аккаунта</b> — вход, синхронизация прогресса, доступ к контенту. Основание: исполнение договора (пользовательского соглашения).</li>
+      <li><b>Поддержка</b> — ответы на обращения. Основание: исполнение договора.</li>
+      <li><b>Push-уведомления</b> — напоминания и новости приложения. Основание: ваше согласие; отключается в настройках устройства.</li>
+      <li><b>Стабильность и безопасность</b> — диагностика сбоев, защита от злоупотреблений. Основание: законный интерес.</li>
+      <li><b>Улучшение продукта</b> — обезличенная аналитика использования. Основание: законный интерес.</li>
+      <li><b>Требования закона</b> — хранение платёжных и налоговых записей. Основание: обязанность по закону.</li>
+    </ul>
+    <p>Данные <b>не используются</b> для рекламного таргетинга и <b>не продаются</b> третьим лицам.</p>
+
+    <h2 id="ru-4"><span class="num">04</span>Кому передаются</h2>
+    <p>Только сервисам, необходимым для работы приложения. Каждый обрабатывает данные по своей политике:</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>Сервис</th><th>Зачем и что получает</th></tr></thead>
+        <tbody>
+          <tr><td>Google Firebase<br>(Cloud Messaging, Crashlytics, Analytics)</td><td>push-уведомления, отчёты о сбоях, обезличенная аналитика. Получает: push-токен, ID устройства, технические данные. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Политика</a></td></tr>
+          <tr><td>Google Sign-In</td><td>вход в аккаунт. Получает: факт авторизации. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Политика</a></td></tr>
+          <tr><td>Apple Sign In</td><td>вход в аккаунт на iOS. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Политика</a></td></tr>
+          <tr><td>Хостинг-провайдер серверов</td><td>хранение базы данных и файлов приложения</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Данные также могут быть раскрыты по законному требованию государственных органов Республики Казахстан.</p>
+
+    <h2 id="ru-5"><span class="num">05</span>Где хранятся и сколько</h2>
+    <ul>
+      <li>Данные пользователей Казахстана хранятся на серверах, расположенных на территории РК, в соответствии со ст. 12 Закона РК «О персональных данных и их защите».</li>
+      <li>Часть технических данных (Firebase) обрабатывается на серверах Google за пределами РК — на основании вашего согласия при установке.</li>
+      <li><b>Данные аккаунта</b> — пока аккаунт активен. Аккаунты без входа более 3 лет удаляются автоматически.</li>
+      <li><b>Логи безопасности</b> — до 90 дней.</li>
+      <li><b>Платёжные и налоговые записи</b> — до 5 лет, как требует законодательство.</li>
+      <li><b>Резервные копии</b> — перезаписываются в течение 90 дней.</li>
+    </ul>
+
+    <h2 id="ru-6"><span class="num">06</span>Ваши права</h2>
+    <ul>
+      <li>Получить копию своих данных</li>
+      <li>Исправить неточные данные — в приложении, экран «Профиль»</li>
+      <li>Удалить аккаунт и данные</li>
+      <li>Отозвать согласие на push-уведомления и аналитику</li>
+      <li>Возразить против обработки или ограничить её</li>
+      <li>Подать жалобу в уполномоченный орган по защите персональных данных РК</li>
+    </ul>
+    <p>Запросы: <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a>. Отвечаем в течение <b>3 рабочих дней</b>, исполняем — не позднее <b>30 дней</b>.</p>
+
+    <h2 id="ru-7"><span class="num">07</span>Удаление аккаунта</h2>
+    <p>Удалить аккаунт можно в приложении: <b>Профиль → Настройки → Удалить аккаунт</b>. Если доступа к приложению нет — отправьте запрос через отдельную страницу.</p>
+    <a class="cta" href="./delete-account.html">Как удалить аккаунт</a>
+
+    <h2 id="ru-8"><span class="num">08</span>Дети</h2>
+    <p>Приложение не предназначено для детей младше 13 лет и не собирает их данные осознанно. Пользователи от 13 до 18 лет используют приложение с согласия законного представителя. Если вам стало известно, что ребёнок предоставил данные без такого согласия — напишите на <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a>, данные будут удалены.</p>
+
+    <h2 id="ru-9"><span class="num">09</span>Безопасность</h2>
+    <p>Передача данных защищена TLS (HTTPS). Пароли хранятся в виде хешей и недоступны сотрудникам. Токены сессии хранятся в защищённом хранилище устройства (Android Keystore / iOS Keychain). Доступ к базе данных ограничен и журналируется. Абсолютной защиты не существует; при утечке, затрагивающей ваши данные, мы уведомим вас и уполномоченный орган.</p>
+
+    <h2 id="ru-10"><span class="num">10</span>Изменения</h2>
+    <p>Политика может обновляться. Дата редакции указана вверху страницы. О существенных изменениях мы сообщим в приложении или по e-mail не менее чем за 14 дней до вступления в силу.</p>
+
+    <h2 id="ru-11"><span class="num">11</span>Контакты</h2>
+    <p>ТОО «Nurbolashaq», Казахстан, г. Алматы<br>
+    Вопросы о данных: <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a><br>
+    Поддержка: <a href="mailto:support@nurbolashaq.kz">support@nurbolashaq.kz</a></p>
+  </div>
+
+  <!-- ============ EN ============ -->
+  <div data-lang="en">
+    <h1>Privacy policy</h1>
+    <p class="lede">This document explains what data the <b>Nurbolashaq</b> mobile app (Android, package <code>kz.nurbolashaq.app</code>) collects, why, who it's shared with, and how you can control it.</p>
+    <p class="meta">Version of 15 July 2026 · Effective 15 July 2026</p>
+
+    <div class="toc">
+      <ol>
+        <li><a href="#en-1">Who processes your data</a></li>
+        <li><a href="#en-2">What we collect</a></li>
+        <li><a href="#en-3">Why, and on what basis</a></li>
+        <li><a href="#en-4">Who we share it with</a></li>
+        <li><a href="#en-5">Storage and retention</a></li>
+        <li><a href="#en-6">Your rights</a></li>
+        <li><a href="#en-7">Account deletion</a></li>
+        <li><a href="#en-8">Children</a></li>
+        <li><a href="#en-9">Security</a></li>
+        <li><a href="#en-10">Changes</a></li>
+        <li><a href="#en-11">Contact</a></li>
+      </ol>
+    </div>
+
+    <h2 id="en-1"><span class="num">01</span>Who processes your data</h2>
+    <p>The data controller is <b>Nurbolashaq LLP</b>, BIN 000000000000, Almaty, Kazakhstan. Data contact: <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a>.</p>
+    <p>By installing the app and creating an account you accept this policy. If you don't agree with it, don't use the app.</p>
+
+    <h2 id="en-2"><span class="num">02</span>What we collect</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>Category</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td>Account data</td><td>name, email, phone number, profile photo, city, date of birth — whatever you enter yourself</td></tr>
+          <tr><td>Sign-in data</td><td>password hash, session tokens; with Google/Apple sign-in — the account ID, name and email provided by the provider</td></tr>
+          <tr><td>In-app activity</td><td>learning progress, favorites, quiz results, interface settings</td></tr>
+          <tr><td>User content</td><td>comments, support messages, uploaded files</td></tr>
+          <tr><td>Technical data</td><td>device model, OS and app version, language, IP address, push token, crash reports</td></tr>
+          <tr><td>Analytics</td><td>anonymized events: screen opens, session length</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">The app does <b>not</b> collect precise location, contacts, SMS, call history or health data, and does not read files beyond what you explicitly choose to upload.</p>
+
+    <h2 id="en-3"><span class="num">03</span>Why, and on what basis</h2>
+    <ul>
+      <li><b>Running the app and your account</b> — sign-in, progress sync, content access. Basis: performance of a contract.</li>
+      <li><b>Support</b> — answering your requests. Basis: performance of a contract.</li>
+      <li><b>Push notifications</b> — reminders and app news. Basis: your consent; can be turned off in device settings.</li>
+      <li><b>Stability and security</b> — crash diagnostics, abuse prevention. Basis: legitimate interest.</li>
+      <li><b>Product improvement</b> — anonymized usage analytics. Basis: legitimate interest.</li>
+      <li><b>Legal requirements</b> — retention of payment and tax records. Basis: legal obligation.</li>
+    </ul>
+    <p>Your data is <b>not</b> used for ad targeting and is <b>never sold</b> to third parties.</p>
+
+    <h2 id="en-4"><span class="num">04</span>Who we share it with</h2>
+    <p>Only services required for the app to work. Each processes data under its own policy:</p>
+    <div class="card">
+      <table>
+        <thead><tr><th>Service</th><th>Purpose and data received</th></tr></thead>
+        <tbody>
+          <tr><td>Google Firebase<br>(Cloud Messaging, Crashlytics, Analytics)</td><td>push notifications, crash reports, anonymized analytics. Receives: push token, device ID, technical data. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Policy</a></td></tr>
+          <tr><td>Google Sign-In</td><td>account sign-in. Receives: the fact of authorization. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Policy</a></td></tr>
+          <tr><td>Apple Sign In</td><td>account sign-in on iOS. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Policy</a></td></tr>
+          <tr><td>Server hosting provider</td><td>storing the database and app files</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Data may also be disclosed upon a lawful request from state authorities of the Republic of Kazakhstan.</p>
+
+    <h2 id="en-5"><span class="num">05</span>Storage and retention</h2>
+    <ul>
+      <li>Data of Kazakhstan users is stored on servers located in Kazakhstan, per Art. 12 of the Law on Personal Data and Its Protection.</li>
+      <li>Some technical data (Firebase) is processed on Google servers outside Kazakhstan, based on your consent at install.</li>
+      <li><b>Account data</b> — while the account is active. Accounts inactive for over 3 years are deleted automatically.</li>
+      <li><b>Security logs</b> — up to 90 days.</li>
+      <li><b>Payment and tax records</b> — up to 5 years, as required by law.</li>
+      <li><b>Backups</b> — overwritten within 90 days.</li>
+    </ul>
+
+    <h2 id="en-6"><span class="num">06</span>Your rights</h2>
+    <ul>
+      <li>Get a copy of your data</li>
+      <li>Correct inaccurate data — in the app, on the Profile screen</li>
+      <li>Delete your account and data</li>
+      <li>Withdraw consent for push notifications and analytics</li>
+      <li>Object to or restrict processing</li>
+      <li>Lodge a complaint with the Kazakhstan data protection authority</li>
+    </ul>
+    <p>Requests: <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a>. We reply within <b>3 business days</b> and act within <b>30 days</b>.</p>
+
+    <h2 id="en-7"><span class="num">07</span>Account deletion</h2>
+    <p>You can delete your account in the app: <b>Profile → Settings → Delete account</b>. If you can't access the app, send a request through the dedicated page.</p>
+    <a class="cta" href="./delete-account.html">How to delete your account</a>
+
+    <h2 id="en-8"><span class="num">08</span>Children</h2>
+    <p>The app isn't intended for children under 13 and doesn't knowingly collect their data. Users aged 13–18 use the app with a legal guardian's consent. If you learn that a child provided data without such consent, write to <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a> and the data will be deleted.</p>
+
+    <h2 id="en-9"><span class="num">09</span>Security</h2>
+    <p>Data in transit is protected with TLS (HTTPS). Passwords are stored as hashes and aren't accessible to staff. Session tokens are kept in the device's secure storage (Android Keystore / iOS Keychain). Database access is restricted and logged. No protection is absolute; if a breach affects your data, we'll notify you and the supervisory authority.</p>
+
+    <h2 id="en-10"><span class="num">10</span>Changes</h2>
+    <p>This policy may be updated. The version date is shown at the top. We'll announce material changes in the app or by email at least 14 days before they take effect.</p>
+
+    <h2 id="en-11"><span class="num">11</span>Contact</h2>
+    <p>Nurbolashaq LLP, Almaty, Kazakhstan<br>
+    Data questions: <a href="mailto:privacy@nurbolashaq.kz">privacy@nurbolashaq.kz</a><br>
+    Support: <a href="mailto:support@nurbolashaq.kz">support@nurbolashaq.kz</a></p>
+  </div>
+  </main>
+
+  <footer>
+    <span data-lang="ru">Nurbolashaq · Редакция от 15.07.2026 · <a href="./delete-account.html">Удаление аккаунта</a></span>
+    <span data-lang="en">Nurbolashaq · Version of 15 Jul 2026 · <a href="./delete-account.html">Account deletion</a></span>
+  </footer>
+</div>
+
+<script>
+  var html = document.documentElement;
+  html.setAttribute("data-active", "ru");
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var lang = b.dataset.set;
+      html.setAttribute("data-active", lang);
+      html.setAttribute("lang", lang);
+      document.querySelectorAll(".lang button").forEach(function (x) {
+        x.setAttribute("aria-pressed", String(x === b));
+      });
+    });
+  });
+</script>
+</body>
+</html>
