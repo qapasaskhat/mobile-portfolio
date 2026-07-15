@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Удаление аккаунта — Nurbolashaq</title>
+<meta name="description" content="Как удалить аккаунт и данные в приложении Nurbolashaq: удаление внутри приложения или запрос по электронной почте.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Удаление аккаунта — Nurbolashaq">
+<meta property="og:description" content="Удалите аккаунт Nurbolashaq в приложении или отправьте запрос по e-mail.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --ink:#0E1626;
+    --ink-2:#16213A;
+    --line:rgba(255,255,255,.10);
+    --text:#E8ECF4;
+    --muted:#9AA6BF;
+    --nur:#F2C14E;        /* нұр — тёплый свет */
+    --nur-soft:rgba(242,193,78,.14);
+    --danger:#E5715F;
+    --radius:14px;
+    --font: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(242,193,78,.10), transparent 60%),
+      var(--ink);
+    color:var(--text);
+    font-family:var(--font);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:40px 20px 72px}
+  header.top{display:flex;align-items:center;gap:12px;margin-bottom:36px;flex-wrap:wrap}
+  .logo{
+    width:38px;height:38px;border-radius:11px;flex:none;
+    background:linear-gradient(160deg,var(--nur),#C98F1E);
+    display:grid;place-items:center;color:#1A1206;font-weight:800;font-size:17px;
+  }
+  .brand{font-weight:700;letter-spacing:.2px}
+  .brand small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;letter-spacing:.4px}
+  .lang{margin-left:auto;display:flex;gap:4px;border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{
+    background:none;border:0;color:var(--muted);font:inherit;font-size:13px;font-weight:600;
+    padding:5px 12px;border-radius:999px;cursor:pointer
+  }
+  .lang button[aria-pressed="true"]{background:var(--nur-soft);color:var(--nur)}
+  .lang button:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+    outline:2px solid var(--nur);outline-offset:2px
+  }
+
+  h1{font-size:clamp(28px,5vw,38px);line-height:1.2;margin:0 0 10px;letter-spacing:-.5px}
+  .lede{color:var(--muted);margin:0 0 28px;max-width:60ch}
+  h2{font-size:19px;margin:36px 0 12px;letter-spacing:-.2px}
+  h3{font-size:15px;margin:0 0 6px}
+  p{margin:0 0 12px}
+  a{color:var(--nur)}
+
+  .card{
+    background:var(--ink-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 20px 18px;margin-bottom:14px
+  }
+  .step{display:flex;gap:14px;align-items:flex-start}
+  .step-n{
+    flex:none;width:26px;height:26px;border-radius:8px;background:var(--nur-soft);
+    color:var(--nur);font-size:13px;font-weight:700;display:grid;place-items:center;margin-top:2px
+  }
+  ol.path{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+  ol.path li{margin-bottom:4px}
+  ol.path b{color:var(--text);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.6px}
+  td:first-child{width:46%}
+  .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:999px}
+  .tag.del{background:rgba(229,113,95,.16);color:var(--danger)}
+  .tag.keep{background:rgba(154,166,191,.16);color:var(--muted)}
+
+  form{display:grid;gap:14px}
+  label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+  input,select,textarea{
+    width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
+    background:rgba(0,0,0,.22);color:var(--text);font:inherit;font-size:15px
+  }
+  textarea{min-height:88px;resize:vertical}
+  .hint{color:var(--muted);font-size:12.5px;margin-top:6px}
+  .btn{
+    display:inline-block;width:100%;padding:13px 18px;border:0;border-radius:10px;cursor:pointer;
+    background:var(--nur);color:#1A1206;font:inherit;font-weight:700;font-size:15px;text-align:center;text-decoration:none
+  }
+  .btn:hover{filter:brightness(1.06)}
+  .note{
+    border-left:2px solid var(--nur);padding:2px 0 2px 14px;color:var(--muted);font-size:14px;margin:14px 0
+  }
+  footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  [data-lang]{display:none}
+  html[data-active="ru"] [data-lang="ru"],
+  html[data-active="en"] [data-lang="en"]{display:revert}
+  @media (prefers-reduced-motion:no-preference){
+    .card{transition:border-color .2s}
+    .card:hover{border-color:rgba(242,193,78,.25)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo" aria-hidden="true">N</div>
+    <div class="brand">
+      Nurbolashaq
+      <small data-lang="ru">Удаление аккаунта и данных</small>
+      <small data-lang="en">Account and data deletion</small>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="ru" aria-pressed="true">RU</button>
+      <button type="button" data-set="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <div data-lang="ru">
+      <h1>Удаление аккаунта Nurbolashaq</h1>
+      <p class="lede">Эта страница относится к мобильному приложению <b>Nurbolashaq</b> (Android, пакет <code id="pkg-ru">kz.nurbolashaq.app</code>). Здесь описано, как удалить аккаунт и связанные с ним данные — прямо в приложении или по запросу на e-mail.</p>
+
+      <h2>Способ 1. Удалить в приложении</h2>
+      <div class="card">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div>
+            <h3>Откройте настройки профиля</h3>
+            <ol class="path">
+              <li>Войдите в аккаунт Nurbolashaq.</li>
+              <li>Откройте <b>Профиль</b> → <b>Настройки</b>.</li>
+              <li>Нажмите <b>Удалить аккаунт</b>.</li>
+              <li>Подтвердите удаление.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <p class="note">Аккаунт и данные удаляются сразу после подтверждения. Отменить действие нельзя.</p>
+
+      <h2>Способ 2. Отправить запрос по e-mail</h2>
+      <p>Если доступа к приложению нет, заполните форму — откроется ваш почтовый клиент с готовым письмом на адрес <a href="mailto:support@nurbolashaq.kz">support@nurbolashaq.kz</a>.</p>
+      <div class="card">
+        <form id="form-ru" novalidate>
+          <div>
+            <label for="email-ru">E-mail аккаунта</label>
+            <input type="email" id="email-ru" name="email" autocomplete="email" placeholder="you@example.com" required>
+            <p class="hint">Укажите адрес, на который зарегистрирован аккаунт.</p>
+          </div>
+          <div>
+            <label for="name-ru">Имя в приложении</label>
+            <input type="text" id="name-ru" name="name" autocomplete="name" placeholder="Как вас зовут в Nurbolashaq">
+          </div>
+          <div>
+            <label for="scope-ru">Что удалить</label>
+            <select id="scope-ru" name="scope">
+              <option value="Удалить аккаунт и все данные">Аккаунт и все данные</option>
+              <option value="Удалить только данные, аккаунт оставить">Только данные, аккаунт оставить</option>
+            </select>
+          </div>
+          <div>
+            <label for="msg-ru">Комментарий (необязательно)</label>
+            <textarea id="msg-ru" name="msg" placeholder="Например: не могу войти в аккаунт"></textarea>
+          </div>
+          <button class="btn" type="submit">Отправить запрос</button>
+          <p class="hint">Мы отвечаем в течение 3 рабочих дней и удаляем данные не позднее 30 дней с момента подтверждения запроса.</p>
+        </form>
+      </div>
+
+      <h2>Какие данные удаляются</h2>
+      <div class="card">
+        <table>
+          <thead><tr><th>Данные</th><th>Что происходит</th></tr></thead>
+          <tbody>
+            <tr><td>Имя, e-mail, телефон, фото профиля</td><td><span class="tag del">Удаляются</span></td></tr>
+            <tr><td>Пароль и токены входа</td><td><span class="tag del">Удаляются</span></td></tr>
+            <tr><td>Прогресс обучения, избранное, настройки</td><td><span class="tag del">Удаляются</span></td></tr>
+            <tr><td>Комментарии и пользовательский контент</td><td><span class="tag del">Удаляются</span></td></tr>
+            <tr><td>Токены push-уведомлений</td><td><span class="tag del">Удаляются</span></td></tr>
+            <tr><td>Обезличенная статистика использования</td><td><span class="tag keep">Хранится</span> — без привязки к личности</td></tr>
+            <tr><td>Записи о платежах и налоговые документы</td><td><span class="tag keep">Хранятся</span> — до 5 лет, требование законодательства</td></tr>
+            <tr><td>Технические логи безопасности</td><td><span class="tag keep">Хранятся</span> — до 90 дней, затем удаляются</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Сроки</h2>
+      <p>Удаление через приложение — сразу. Удаление по e-mail — не позднее <b>30 дней</b> после подтверждения запроса. Резервные копии, содержащие данные, перезаписываются в течение <b>90 дней</b>.</p>
+
+      <h2>Контакты</h2>
+      <p>Разработчик: <b>Nurbolashaq</b> · <a href="mailto:support@nurbolashaq.kz">support@nurbolashaq.kz</a><br>
+      Политика конфиденциальности: <a href="./privacy-policy.html">nurbolashaq.kz/privacy-policy</a></p>
+    </div>
+
+    <div data-lang="en">
+      <h1>Delete your Nurbolashaq account</h1>
+      <p class="lede">This page applies to the <b>Nurbolashaq</b> Android app (package <code>kz.nurbolashaq.app</code>). It explains how to delete your account and its data — in the app, or by email request.</p>
+
+      <h2>Option 1. Delete in the app</h2>
+      <div class="card">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div>
+            <h3>Open your profile settings</h3>
+            <ol class="path">
+              <li>Sign in to Nurbolashaq.</li>
+              <li>Go to <b>Profile</b> → <b>Settings</b>.</li>
+              <li>Tap <b>Delete account</b>.</li>
+              <li>Confirm the deletion.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <p class="note">The account and its data are removed right after you confirm. This can't be undone.</p>
+
+      <h2>Option 2. Request by email</h2>
+      <p>If you can't access the app, fill in the form — your mail client opens with a prepared message to <a href="mailto:support@nurbolashaq.kz">support@nurbolashaq.kz</a>.</p>
+      <div class="card">
+        <form id="form-en" novalidate>
+          <div>
+            <label for="email-en">Account email</label>
+            <input type="email" id="email-en" name="email" autocomplete="email" placeholder="you@example.com" required>
+            <p class="hint">Use the address your account is registered with.</p>
+          </div>
+          <div>
+            <label for="name-en">Name in the app</label>
+            <input type="text" id="name-en" name="name" autocomplete="name" placeholder="Your Nurbolashaq name">
+          </div>
+          <div>
+            <label for="scope-en">What to delete</label>
+            <select id="scope-en" name="scope">
+              <option value="Delete account and all data">Account and all data</option>
+              <option value="Delete data only, keep the account">Data only, keep the account</option>
+            </select>
+          </div>
+          <div>
+            <label for="msg-en">Comment (optional)</label>
+            <textarea id="msg-en" name="msg" placeholder="e.g. I can't sign in"></textarea>
+          </div>
+          <button class="btn" type="submit">Send request</button>
+          <p class="hint">We reply within 3 business days and delete data no later than 30 days after the request is confirmed.</p>
+        </form>
+      </div>
+
+      <h2>What gets deleted</h2>
+      <div class="card">
+        <table>
+          <thead><tr><th>Data</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td>Name, email, phone, profile photo</td><td><span class="tag del">Deleted</span></td></tr>
+            <tr><td>Password and auth tokens</td><td><span class="tag del">Deleted</span></td></tr>
+            <tr><td>Learning progress, favorites, settings</td><td><span class="tag del">Deleted</span></td></tr>
+            <tr><td>Comments and user content</td><td><span class="tag del">Deleted</span></td></tr>
+            <tr><td>Push notification tokens</td><td><span class="tag del">Deleted</span></td></tr>
+            <tr><td>Anonymized usage statistics</td><td><span class="tag keep">Kept</span> — not linked to you</td></tr>
+            <tr><td>Payment and tax records</td><td><span class="tag keep">Kept</span> — up to 5 years, required by law</td></tr>
+            <tr><td>Security logs</td><td><span class="tag keep">Kept</span> — up to 90 days, then deleted</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Timing</h2>
+      <p>In-app deletion is immediate. Email requests are completed within <b>30 days</b> of confirmation. Backups containing your data are overwritten within <b>90 days</b>.</p>
+
+      <h2>Contact</h2>
+      <p>Developer: <b>Nurbolashaq</b> · <a href="mailto:support@nurbolashaq.kz">support@nurbolashaq.kz</a><br>
+      Privacy policy: <a href="./privacy-policy.html">nurbolashaq.kz/privacy-policy</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <span data-lang="ru">Nurbolashaq · Обновлено 15.07.2026</span>
+    <span data-lang="en">Nurbolashaq · Updated 15 Jul 2026</span>
+  </footer>
+</div>
+
+<script>
+  var SUPPORT = "support@nurbolashaq.kz";
+  var html = document.documentElement;
+  html.setAttribute("data-active", "ru");
+
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var lang = b.dataset.set;
+      html.setAttribute("data-active", lang);
+      html.setAttribute("lang", lang);
+      document.querySelectorAll(".lang button").forEach(function (x) {
+        x.setAttribute("aria-pressed", String(x === b));
+      });
+    });
+  });
+
+  function bind(id, lang) {
+    var f = document.getElementById(id);
+    if (!f) return;
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = f.email.value.trim();
+      if (!email || email.indexOf("@") < 1) {
+        f.email.focus();
+        alert(lang === "ru" ? "Укажите e-mail аккаунта." : "Enter your account email.");
+        return;
+      }
+      var subject = lang === "ru"
+        ? "Запрос на удаление аккаунта — Nurbolashaq"
+        : "Account deletion request — Nurbolashaq";
+      var body = [
+        lang === "ru" ? "Прошу удалить мой аккаунт в приложении Nurbolashaq." : "Please delete my Nurbolashaq account.",
+        "",
+        (lang === "ru" ? "E-mail аккаунта: " : "Account email: ") + email,
+        (lang === "ru" ? "Имя: " : "Name: ") + (f.name.value.trim() || "—"),
+        (lang === "ru" ? "Запрос: " : "Request: ") + f.scope.value,
+        (lang === "ru" ? "Комментарий: " : "Comment: ") + (f.msg.value.trim() || "—")
+      ].join("\n");
+      window.location.href = "mailto:" + SUPPORT +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+  bind("form-ru", "ru");
+  bind("form-en", "en");
+</script>
+</body>
+</html>
